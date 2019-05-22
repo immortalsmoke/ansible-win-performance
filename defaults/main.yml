@@ -1,0 +1,4 @@
+# Maps Windows version numbers to reg files
+
+#6: "Server2012.reg"
+#10: "Server2016.reg"

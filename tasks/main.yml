@@ -1,0 +1,18 @@
+# Performance role
+# Adjust Windows graphical settings for best performance
+# The win_version_to_name[ansible_distribution_major_version] grabs a value from a dictionary located in defaults/main.yml
+
+- name: "Creating C:\\Temp directory"
+  win_file:
+    path: "C:\\Temp"
+    state: directory
+
+- name: "Copying registry file to target server"
+  win_copy:
+    src: "files/version{{ ansible_distribution_major_version }}.reg"
+    dest: "C:\\Temp\\version{{ ansible_distribution_major_version }}.reg"
+
+- name: "Adjusting graphical settings for best performance"
+  win_regmerge:
+    path: "C:\\Temp\\version{{ ansible_distribution_major_version }}.reg"
+
